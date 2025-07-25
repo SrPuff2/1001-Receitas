@@ -8,7 +8,7 @@
     <!-- INÍCIO DO CÓDIGO PARA PREVIEW DE LINK (THUMBNAIL) -->
     <meta property="og:title" content="1001 Receitas Deliciosas Zero Açúcar">
     <meta property="og:description" content="A liberdade de comer o doce que você ama, sem culpa e sem sair da dieta.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1587324439853-c07a3d219912?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="https://blog.prezunic.com.br/wp-content/uploads/2024/11/image.jpeg">
     <meta property="og:url" content="https://1001receitas.vercel.app/">
     <meta property="og:type" content="website">
     <!-- FIM DO CÓDIGO PARA PREVIEW DE LINK -->
@@ -49,8 +49,8 @@
             background-color: var(--color-header-bg);
             color: white;
             text-align: center;
-            padding: 5rem 1rem;
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            padding: 4rem 1rem; /* Padding vertical diminuído */
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%E3%80%88/g%3E%3C/svg%3E");
         }
         .hero-title {
             font-family: var(--font-display);
@@ -60,7 +60,7 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: #e5e7eb;
-            margin-top: 1.5rem;
+            margin-top: 1rem; /* Espaçamento diminuído */
         }
         .hero-title span { color: #fcd34d; }
 
@@ -163,6 +163,7 @@
         
         /* Media Queries para Tablet e Desktop (Layouts Maiores) */
         @media (min-width: 768px) {
+            .hero-section { padding: 6rem 1rem; }
             .hero-title { font-size: 3.75rem; }
             .hero-subtitle { font-size: 1.75rem; }
             .carousel-slide { flex-direction: row; }
