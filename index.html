@@ -6,356 +6,476 @@
     <title>1001 Receitas Deliciosas Zero Açúcar</title>
 
     <!-- INÍCIO DO CÓDIGO PARA PREVIEW DE LINK (THUMBNAIL) -->
-    <!-- Lembre-se de trocar os links nos campos og:image e og:url -->
     <meta property="og:title" content="1001 Receitas Deliciosas Zero Açúcar">
     <meta property="og:description" content="A liberdade de comer o doce que você ama, sem culpa e sem sair da dieta.">
-    <meta property="og:image" content="https://blog.prezunic.com.br/wp-content/uploads/2024/11/image.jpeg">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1587324439853-c07a3d219912?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://1001receitas.vercel.app/">
     <meta property="og:type" content="website">
     <!-- FIM DO CÓDIGO PARA PREVIEW DE LINK -->
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Alpine.js para interatividade -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
     <style>
-        /* Estilos personalizados com a NOVA PALETA */
+        /* CSS Reset e Estilos Globais */
+        :root {
+            --color-background: #FFFBEB;
+            --color-header-bg: #047857;
+            --color-primary-text: #333;
+            --color-secondary-text: #555;
+            --color-highlight: #047857;
+            --color-cta-start: #EF4444;
+            --color-cta-end: #F97316;
+            --font-body: 'Lato', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #FFFBEB; /* Fundo Amarelo Creme (Fome/Conforto) */
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            line-height: 1.75;
         }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-        .hero-title { font-family: 'Playfair Display', serif; }
+        h1, h2, h3 { font-family: var(--font-heading); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        section { padding: 4rem 0; }
+
+        /* Header */
         .hero-section {
-            background-color: #047857; /* NOVO Verde Esmeralda (Saúde/Leveza) */
+            background-color: var(--color-header-bg);
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
             background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #e5e7eb;
+            margin-top: 1.5rem;
+        }
+        .hero-title span { color: #fcd34d; }
+
+        /* Seção Persuasiva */
+        .persuasive-section { background-color: white; }
+        .persuasive-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .persuasive-section p { font-size: 1.125rem; color: var(--color-secondary-text); margin-bottom: 1rem; }
+        .quote-box {
+            margin-top: 2rem;
+            background-color: #f9fafb;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-box p { font-style: italic; }
+        .quote-box .author { font-weight: bold; text-align: right; font-style: normal; }
+        .highlight { color: var(--color-highlight); font-weight: 700; }
+
+        /* Carrossel */
+        .carousel-container { max-width: 900px; }
+        .carousel-slide { display: none; background-color: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .carousel-slide.active { display: block; }
+        .carousel-content { padding: 2rem; text-align: left; }
+        .carousel-content h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .carousel-nav { margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.75rem; }
+        .carousel-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background-color: #d1d5db; cursor: pointer; transition: all 0.3s; }
+        .carousel-dot.active { background-color: #ef4444; width: 1.5rem; }
+
+        /* Receitas */
+        .recipe-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-left: 8px solid #f59e0b;
+        }
+        .recipe-card h3 { font-size: 1.75rem; }
+        .recipe-card h4 { font-size: 1.25rem; border-bottom: 2px solid #f3f4f6; padding-bottom: 0.5rem; margin-bottom: 0.75rem; }
+        .recipe-card ul, .recipe-card ol { padding-left: 1.5rem; }
+        .recipe-tip { margin-top: 1.5rem; padding: 1rem; border-radius: 0.5rem; }
+        .recipe-tip.mousse { background-color: #f0fdf4; }
+        .recipe-tip.mousse span { color: #166534; }
+        .recipe-tip.pancake { background-color: #fee2e2; }
+        .recipe-tip.pancake span { color: #991b1b; }
+
+        /* Informativos */
+        .info-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .info-card { background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; }
+        .info-icon { flex-shrink: 0; padding: 0.75rem; border-radius: 50%; }
+
+        /* Oferta */
+        .offer-section { background-color: #10b981; color: white; }
+        .offer-box { background-color: white; color: var(--color-primary-text); border-radius: 0.5rem; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .offer-image { width: 12rem; height: 12rem; border-radius: 50%; object-cover; border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin: 0 auto; }
+        .offer-list li { display: flex; align-items: center; margin-bottom: 0.75rem; font-size: 1.125rem; }
+        .offer-list svg { flex-shrink: 0; width: 1.5rem; height: 1.5rem; color: #10b981; margin-right: 0.5rem; }
+        .price { font-size: 4rem; font-weight: 800; color: #dc2626; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .urgency-banner { background-color: #fef3c7; border-left: 4px solid #f59e0b; color: #b45309; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0; }
         .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            background-image: linear-gradient(to right, var(--color-cta-start), var(--color-cta-end));
             transition: transform 0.2s, box-shadow 0.2s;
-            background-image: linear-gradient(to right, #EF4444, #F97316); /* Vermelho-Tomate para Laranja-Cenoura (Fome/Ação) */
         }
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
-        }
-        .shadow-text { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
-        .highlight { color: #047857; font-weight: 700; }
-        /* Classe para melhorar a legibilidade */
-        .readable-text {
-            line-height: 1.75; /* Aumenta o espaçamento entre as linhas */
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4); }
+
+        /* Garantia e FAQ */
+        .guarantee-section img { width: 150px; }
+        .faq-item { background-color: white; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .faq-answer p { padding: 0 1.5rem 1.5rem; }
+
+        /* Rodapé */
+        footer { background-color: #1f2937; color: #9ca3af; text-align: center; padding: 2rem 1rem; font-size: 0.875rem; }
+
+        /* Animações e Media Queries para Responsividade */
+        @keyframes pulse { 50% { opacity: .7; } }
+        
+        /* Layout para Tablet */
+        @media (min-width: 768px) {
+            .hero-title { font-size: 3.75rem; }
+            .carousel-slide { flex-direction: row; }
+            .carousel-image { width: 50%; height: auto; }
+            .recipe-card-content { display: flex; gap: 2rem; }
+            .recipe-card-col { width: 50%; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .offer-content { display: flex; align-items: center; gap: 2rem; }
+            .offer-image-container { width: 33.33%; }
+            .offer-list-container { width: 66.67%; }
+            .guarantee-content { display: flex; align-items: center; gap: 2rem; text-align: left; }
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
 
-    <!-- Seção Principal (Hero) REESTILIZADA -->
-    <header class="hero-section text-white text-center py-16 px-4 sm:py-20 sm:px-6">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="hero-title text-2xl sm:text-3xl sm:text-4xl md:text-4xl sm:text-5xl md:text-6xl leading-tight shadow-text">
-                A Liberdade de Comer o <span class="text-amber-300">Doce que Você Ama</span>
-            </h1>
-            <p class="mt-6 text-xl sm:text-2xl md:text-2xl sm:text-3xl text-gray-200 max-w-2xl mx-auto tracking-wide">
-                Sem Culpa. Sem Sair da Dieta.
-            </p>
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">A Liberdade de Comer o <span>Doce que Você Ama</span></h1>
+            <p class="hero-subtitle">Sem Culpa. Sem Sair da Dieta.</p>
         </div>
     </header>
 
-    <!-- SEÇÃO PERSUASIVA COM CITAÇÃO REAL -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Por que as dietas tradicionais falham?</h2>
-            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Elas nos ensinam a lutar contra a comida. A ver o alimento como um inimigo. Contar calorias, pular refeições, passar fome... Esse ciclo de restrição e culpa não só nos deixa infelizes, como também sabota nosso metabolismo.</p>
-            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">A verdade é que emagrecer e ser saudável não tem a ver com parar de comer, mas sim com <span class="highlight">aprender a comer</span>. É sobre nutrir o corpo com comida de verdade, rica em sabor e em vida.</p>
-            <div class="mt-8 bg-gray-50 border-l-4 border-amber-400 p-6 text-left rounded-r-lg">
-                <p class="text-gray-700 italic readable-text">"O terrorismo nutricional e a mentalidade de dieta não funcionam e engordam. Acredito que o resgate do prazer de comer é a chave para uma relação mais saudável com a comida e com o corpo."</p>
-                <p class="mt-4 font-bold text-right">- Sophie Deram, Nutricionista e Doutora em endocrinologia (@sophiederam)</p>
+    <main>
+        <section class="persuasive-section">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <h2>Por que as dietas tradicionais falham?</h2>
+                <p class="readable-text">Elas nos ensinam a lutar contra a comida. A ver o alimento como um inimigo. Contar calorias, pular refeições, passar fome... Esse ciclo de restrição e culpa não só nos deixa infelizes, como também sabota nosso metabolismo.</p>
+                <p class="readable-text">A verdade é que emagrecer e ser saudável não tem a ver com parar de comer, mas sim com <span class="highlight">aprender a comer</span>. É sobre nutrir o corpo com comida de verdade, rica em sabor e em vida.</p>
+                <div class="quote-box">
+                    <p class="readable-text">"O terrorismo nutricional e a mentalidade de dieta não funcionam e engordam. Acredito que o resgate do prazer de comer é a chave para uma relação mais saudável com a comida e com o corpo."</p>
+                    <p class="author">- Sophie Deram, Nutricionista e Doutora em endocrinologia (@sophiederam)</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CARROSSEL AUTOMÁTICO DE BENEFÍCIOS -->
-    <section class="py-16 px-4" 
-        x-data="{ activeSlide: 1, totalSlides: 4, interval: null,
-                  startCarousel() { this.interval = setInterval(() => { this.activeSlide = this.activeSlide === this.totalSlides ? 1 : this.activeSlide + 1 }, 5000) },
-                  stopCarousel() { clearInterval(this.interval) } }"
-        x-init="startCarousel()">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Chega de passar vontade. A vida pode ser doce e saudável.</h2>
-            <div class="mt-8 relative" @mouseenter="stopCarousel()" @mouseleave="startCarousel()">
-                <!-- Slides -->
-                <div class="overflow-hidden rounded-lg shadow-2xl">
-                    <!-- Slide 1 -->
-                    <div x-show="activeSlide === 1" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
-                        <img src="https://i0.statig.com.br/bancodeimagens/al/xm/ar/alxmarc4ozij3d9knro6wf83q.jpg" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
-                        <div class="p-4 sm:p-6 md:p-8 text-left">
-                            <h3 class="font-bold text-2xl mb-2 text-red-600">😭 Chega de Culpa!</h3>
-                            <p class="text-gray-700 readable-text">Sabe aquela sensação ruim depois de comer um doce? Com estas receitas, você só sente o prazer, sem o peso na consciência.</p>
+        <section>
+            <div class="container carousel-container" id="carousel">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Chega de passar vontade. A vida pode ser doce e saudável.</h2>
+                <div class="carousel-wrapper" style="position: relative;">
+                    <div class="carousel-slide active">
+                        <img src="https://i0.statig.com.br/bancodeimagens/al/xm/ar/alxmarc4ozij3d9knro6wf83q.jpg" alt="[Imagem de Bolo de chocolate saudável]" class="carousel-image">
+                        <div class="carousel-content">
+                            <h3 style="color: #dc2626;">😭 Chega de Culpa!</h3>
+                            <p class="readable-text">Sabe aquela sensação ruim depois de comer um doce? Com estas receitas, você só sente o prazer, sem o peso na consciência.</p>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
-                    <div x-show="activeSlide === 2" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
-                        <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
-                        <div class="p-4 sm:p-6 md:p-8 text-left">
-                            <h3 class="font-bold text-2xl mb-2 text-orange-600">🍰 Sabor de Verdade</h3>
-                            <p class="text-gray-700 readable-text">Esqueça os doces "fit" com gosto de isopor. Aqui, as sobremesas são tão gostosas que sua família nem vai notar que são saudáveis.</p>
+                    <div class="carousel-slide">
+                        <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" alt="[Imagem de Sobremesa bonita e saborosa]" class="carousel-image">
+                        <div class="carousel-content">
+                            <h3 style="color: #ea580c;">🍰 Sabor de Verdade</h3>
+                            <p class="readable-text">Esqueça os doces "fit" com gosto de isopor. Aqui, as sobremesas são tão gostosas que sua família nem vai notar que são saudáveis.</p>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
-                    <div x-show="activeSlide === 3" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
-                        <img src="https://s2.glbimg.com/GEtIiNJFl_VTRVLZ_IxkAuS0cQA=/620x455/e.glbimg.com/og/ed/f/original/2019/09/06/avocado_com_cacau_2.png" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
-                        <div class="p-4 sm:p-6 md:p-8 text-left">
-                            <h3 class="font-bold text-2xl mb-2 text-amber-600">⏰ Fáceis e Rápidas</h3>
-                            <p class="text-gray-700 readable-text">Sem ingredientes mirabolantes ou técnicas complicadas. São receitas práticas para o dia a dia de quem não tem tempo a perder.</p>
+                    <div class="carousel-slide">
+                        <img src="https://s2.glbimg.com/GEtIiNJFl_VTRVLZ_IxkAuS0cQA=/620x455/e.glbimg.com/og/ed/f/original/2019/09/06/avocado_com_cacau_2.png" alt="[Imagem de Mousse de abacate com cacau]" class="carousel-image">
+                        <div class="carousel-content">
+                            <h3 style="color: #d97706;">⏰ Fáceis e Rápidas</h3>
+                            <p class="readable-text">Sem ingredientes mirabolantes ou técnicas complicadas. São receitas práticas para o dia a dia de quem não tem tempo a perder.</p>
                         </div>
                     </div>
-                    <!-- Slide 4 -->
-                    <div x-show="activeSlide === 4" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
-                        <img src="https://blog.gsuplementos.com.br/wp-content/uploads/2023/07/receitas.webp" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
-                        <div class="p-4 sm:p-6 md:p-8 text-left">
-                            <h3 class="font-bold text-2xl mb-2 text-emerald-600">🎁 Mais que Receitas</h3>
-                            <p class="text-gray-700 readable-text">Além do livro principal, você leva 4 bônus incríveis para transformar sua saúde de forma completa, sem pagar nada a mais por isso.</p>
+                    <div class="carousel-slide">
+                        <img src="https://blog.gsuplementos.com.br/wp-content/uploads/2023/07/receitas.webp" alt="[Imagem de Vários pratos saudáveis]" class="carousel-image">
+                        <div class="carousel-content">
+                            <h3 style="color: #059669;">🎁 Mais que Receitas</h3>
+                            <p class="readable-text">Além do livro principal, você leva 4 bônus incríveis para transformar sua saúde de forma completa, sem pagar nada a mais por isso.</p>
                         </div>
                     </div>
                 </div>
-                <!-- Navegação -->
-                <div class="mt-4 flex justify-center items-center space-x-3">
-                    <div class="flex space-x-2">
-                        <template x-for="i in totalSlides" :key="i">
-                            <button @click="activeSlide = i" :class="{'bg-red-500 w-6': activeSlide === i, 'bg-gray-300 w-3': activeSlide !== i}" class="h-3 rounded-full transition-all"></button>
-                        </template>
+                <div class="carousel-nav"></div>
+            </div>
+        </section>
+
+        <section style="background-color: white;">
+            <div class="container" style="max-width: 800px;">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h2>Quer uma prova de que é possível?</h2>
+                    <p class="readable-text" style="font-size: 1.125rem; color: var(--color-secondary-text);">Aqui está uma das nossas receitas favoritas. Experimente e se surpreenda!</p>
+                </div>
+                <div class="recipe-card">
+                    <h3>Mousse de Chocolate Fit (e delicioso!)</h3>
+                    <p style="color: #6b7280; margin-top: 0.25rem; margin-bottom: 1.5rem;">Leva só 3 ingredientes e fica pronto em minutos.</p>
+                    <div class="recipe-card-content">
+                        <div class="recipe-card-col">
+                            <h4>Ingredientes:</h4>
+                            <ul class="readable-text">
+                                <li>2 abacates maduros</li>
+                                <li>4 colheres de sopa de cacau em pó 100%</li>
+                                <li>4 colheres de sopa de mel ou agave (ou a gosto)</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-card-col">
+                            <h4>Modo de Preparo:</h4>
+                            <ol class="readable-text">
+                                <li>Bata tudo no liquidificador até obter um creme liso.</li>
+                                <li>Distribua em taças e leve à geladeira por 30 minutos.</li>
+                                <li>Sirva gelado!</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="recipe-tip mousse">
+                        <p class="readable-text"><span>Dica de Ouro:</span> Para uma textura ainda mais cremosa, use um mixer de mão. Se quiser, pode adicionar raspas de laranja ou uma pitada de canela.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- SEÇÃO: RECEITA GRÁTIS 1 -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Quer uma prova de que é possível?</h2>
-                <p class="mt-2 text-base sm:text-lg text-gray-700 readable-text">Aqui está uma das nossas receitas favoritas. Experimente e se surpreenda!</p>
+        </section>
+
+        <section style="background-color: #f9fafb;">
+            <div class="container" style="max-width: 900px;">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem;">Um tesouro culinário na sua mão</h2>
+                <p style="text-align: center; font-size: 1.125rem; color: var(--color-secondary-text); margin-bottom: 2.5rem;">Organizamos tudo para você encontrar a receita perfeita para cada ocasião.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon" style="background-color: #fee2e2;"><svg style="width: 2rem; height: 2rem; color: #dc2626;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21,12a9,9,0,1,1-9-9A9,9,0,0,1,21,12Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,8v4l2,1"></path></svg></div>
+                        <div><h3>Doces para o Dia a Dia</h3><p class="readable-text">Receitas rápidas para matar a vontade sem sair da rotina.</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon" style="background-color: #ffedd5;"><svg style="width: 2rem; height: 2rem; color: #f97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,22s8-4,8-10V5L12,2,4,5v7C4,18,12,22,12,22Z"></path></svg></div>
+                        <div><h3>Sobremesas Especiais</h3><p class="readable-text">Bolos e tortas para impressionar a família no domingo.</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon" style="background-color: #fef3c7;"><svg style="width: 2rem; height: 2rem; color: #d97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13,10V3.3a1,1,0,0,0-2,0V10H4v4h7v5a1,1,0,0,0,2,0V14h7V10Z"></path></svg></div>
+                        <div><h3>Lanches e Café da Manhã</h3><p class="readable-text">Panquecas e bolinhos para começar o dia com energia.</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon" style="background-color: #d1fae5;"><svg style="width: 2rem; height: 2rem; color: #059669;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,2a10,10,0,1,0,10,10A10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,6v6l4,2"></path></svg></div>
+                        <div><h3>Bebidas e Shakes</h3><p class="readable-text">Vitaminas e smoothies cremosos para qualquer hora.</p></div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border-l-8 border-amber-400">
-                <h3 class="font-bold text-2xl text-gray-800">Mousse de Chocolate Fit (e delicioso!)</h3>
-                <p class="text-gray-500 mt-1 mb-6">Leva só 3 ingredientes e fica pronto em minutos.</p>
-                <div class="flex flex-col sm:flex-col md:flex-row gap-6 sm:gap-8">
-                    <div class="w-full sm:w-full md:w-1/2">
-                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 readable-text">
-                            <li>2 abacates maduros</li>
-                            <li>4 colheres de sopa de cacau em pó 100%</li>
-                            <li>4 colheres de sopa de mel ou agave (ou a gosto)</li>
+        </section>
+
+        <section style="background-color: white;">
+            <div class="container" style="max-width: 800px;">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h2>E que tal uma opção para o café da manhã?</h2>
+                    <p class="readable-text" style="font-size: 1.125rem; color: var(--color-secondary-text);">Essa panqueca vai salvar suas manhãs. É incrivelmente fácil!</p>
+                </div>
+                <div class="recipe-card" style="border-left-color: #f87171;">
+                    <h3>Panqueca de Banana Fit (2 Ingredientes)</h3>
+                    <p style="color: #6b7280; margin-top: 0.25rem; margin-bottom: 1.5rem;">A receita mais fácil do mundo para um café da manhã rápido e saudável.</p>
+                    <div class="recipe-card-content">
+                        <div class="recipe-card-col">
+                            <h4>Ingredientes:</h4>
+                            <ul class="readable-text">
+                                <li>1 banana madura</li>
+                                <li>2 ovos</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-card-col">
+                            <h4>Modo de Preparo:</h4>
+                            <ol class="readable-text">
+                                <li>Amasse bem a banana com um garfo.</li>
+                                <li>Numa tigela, bata os ovos e misture com a banana.</li>
+                                <li>Aqueça uma frigideira antiaderente e despeje pequenas porções. Doure dos dois lados e pronto!</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="recipe-tip pancake">
+                        <p class="readable-text"><span>Dica de Ouro:</span> Sirva com canela, mel, frutas frescas ou pasta de amendoim por cima. Fica divino!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #f9fafb; text-align: center;">
+            <div class="container" style="max-width: 800px;">
+                <h2>Você tem duas escolhas agora...</h2>
+                <p class="readable-text" style="font-size: 1.125rem; color: var(--color-secondary-text); margin-top: 1rem;">Você pode continuar no mesmo ciclo: sentir vontade, comer, sentir culpa e começar tudo de novo amanhã. Ou pode tomar uma decisão hoje para quebrar esse ciclo para sempre.</p>
+                <p class="readable-text" style="font-size: 1.125rem; color: var(--color-secondary-text); margin-top: 1rem;">Imagine ter a tranquilidade de saber que você tem <span class="highlight">centenas de opções deliciosas e saudáveis</span> te esperando. Imagine a alegria de servir uma sobremesa incrível para sua família, sabendo que está cuidando da saúde de todos. Essa liberdade não tem preço.</p>
+                <p style="font-size: 1.25rem; font-weight: bold; margin-top: 1.5rem;">Está na hora de transformar sua relação com a comida. Estamos juntos nessa jornada.</p>
+            </div>
+        </section>
+
+        <section id="oferta" class="offer-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Receba seu acesso completo agora mesmo:</h2>
+                <div class="offer-box offer-content">
+                    <div class="offer-image-container">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" alt="[Imagem de Torta de frutas vermelhas]" class="offer-image">
+                    </div>
+                    <div class="offer-list-container">
+                        <ul class="offer-list">
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>E-book 1001 Receitas Zero Açúcar</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 1: Guia de Sucos Detox</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 2: E-book Fim da TPM</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 3: Guia Emagreça Comendo</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Acesso Vitalício e Atualizações</li>
                         </ul>
                     </div>
-                    <div class="w-full sm:w-full md:w-1/2">
-                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-700 readable-text">
-                            <li>Bata tudo no liquidificador até obter um creme liso.</li>
-                            <li>Distribua em taças e leve à geladeira por 30 minutos.</li>
-                            <li>Sirva gelado!</li>
-                        </ol>
+                </div>
+                <div class="offer-box" style="margin-top: 2rem; text-align: center;">
+                    <p style="font-size: 1.125rem;">De <del style="color: #ef4444;">R$ 347,90</del> por apenas:</p>
+                    <p class="price">R$ 67,00</p>
+                    <p style="color: var(--color-secondary-text);">Pagamento único, sem mensalidades. Menos de R$ 0,07 por receita!</p>
+                    <div class="urgency-banner">
+                        <p style="font-weight: bold;">🔥 Oferta Especial por Tempo Limitado!</p>
                     </div>
-                </div>
-                <div class="mt-6 bg-emerald-50 p-4 rounded-lg">
-                    <p class="readable-text"><span class="font-bold text-emerald-800">Dica de Ouro:</span> Para uma textura ainda mais cremosa, use um mixer de mão. Se quiser, pode adicionar raspas de laranja ou uma pitada de canela.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO DE INFORMATIVOS SVG (REINSERIDA) -->
-    <section class="py-16 px-4 bg-gray-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-center text-gray-900">Um tesouro culinário na sua mão</h2>
-            <p class="mt-2 text-base sm:text-lg text-center text-gray-700 readable-text">Organizamos tudo para você encontrar a receita perfeita para cada ocasião.</p>
-            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4">
-                    <div class="flex-shrink-0 bg-red-100 p-3 rounded-full"><svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21,12a9,9,0,1,1-9-9A9,9,0,0,1,21,12Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,8v4l2,1"></path></svg></div>
-                    <div>
-                        <h3 class="font-bold text-xl">Doces para o Dia a Dia</h3>
-                        <p class="text-gray-700 readable-text">Receitas rápidas e fáceis para matar a vontade de doce sem sair da rotina.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4">
-                    <div class="flex-shrink-0 bg-orange-100 p-3 rounded-full"><svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,22s8-4,8-10V5L12,2,4,5v7C4,18,12,22,12,22Z"></path></svg></div>
-                    <div>
-                        <h3 class="font-bold text-xl">Sobremesas Especiais</h3>
-                        <p class="text-gray-700 readable-text">Bolos, tortas e pavês para impressionar a família no almoço de domingo.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4">
-                    <div class="flex-shrink-0 bg-amber-100 p-3 rounded-full"><svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13,10V3.3a1,1,0,0,0-2,0V10H4v4h7v5a1,1,0,0,0,2,0V14h7V10Z"></path></svg></div>
-                    <div>
-                        <h3 class="font-bold text-xl">Lanches e Café da Manhã</h3>
-                        <p class="text-gray-700 readable-text">Panquecas, bolinhos e pães para começar o dia com energia e sabor.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4">
-                    <div class="flex-shrink-0 bg-emerald-100 p-3 rounded-full"><svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,2a10,10,0,1,0,10,10A10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,6v6l4,2"></path></svg></div>
-                    <div>
-                        <h3 class="font-bold text-xl">Bebidas e Shakes</h3>
-                        <p class="text-gray-700 readable-text">Vitaminas, smoothies e chocolates quentes cremosos para qualquer hora do dia.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO: RECEITA GRÁTIS 2 -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">E que tal uma opção para o café da manhã?</h2>
-                <p class="mt-2 text-base sm:text-lg text-gray-700 readable-text">Essa panqueca vai salvar suas manhãs. É incrivelmente fácil!</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border-l-8 border-red-400">
-                <h3 class="font-bold text-2xl text-gray-800">Panqueca de Banana Fit (2 Ingredientes)</h3>
-                <p class="text-gray-500 mt-1 mb-6">A receita mais fácil do mundo para um café da manhã rápido e saudável.</p>
-                <div class="flex flex-col sm:flex-col md:flex-row gap-6 sm:gap-8">
-                    <div class="w-full sm:w-full md:w-1/2">
-                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 readable-text">
-                            <li>1 banana madura</li>
-                            <li>2 ovos</li>
-                        </ul>
-                    </div>
-                    <div class="w-full sm:w-full md:w-1/2">
-                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-700 readable-text">
-                            <li>Amasse bem a banana com um garfo.</li>
-                            <li>Em uma tigela, bata os ovos e misture com a banana amassada.</li>
-                            <li>Aqueça uma frigideira antiaderente e despeje pequenas porções da massa. Doure dos dois lados e pronto!</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="mt-6 bg-red-50 p-4 rounded-lg">
-                    <p class="readable-text"><span class="font-bold text-red-800">Dica de Ouro:</span> Sirva com canela, mel, frutas frescas ou pasta de amendoim por cima. Fica divino!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- SEÇÃO: PRÉ-CTA -->
-    <section class="py-16 px-4 sm:py-20 sm:px-6 text-center bg-gray-100">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Você tem duas escolhas agora...</h2>
-            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Você pode continuar no mesmo ciclo: sentir vontade de comer um doce, se render, sentir culpa e começar tudo de novo amanhã. Ou você pode tomar uma decisão hoje para quebrar esse ciclo para sempre.</p>
-            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Imagine ter a tranquilidade de saber que você tem <span class="highlight">centenas de opções deliciosas e saudáveis</span> te esperando. Imagine a alegria de servir uma sobremesa incrível para sua família, sabendo que está cuidando da saúde de todos. Essa liberdade não tem preço.</p>
-            <p class="mt-6 text-base sm:text-lg sm:text-xl font-bold text-gray-800">Está na hora de transformar sua relação com a comida. Estamos juntos nessa jornada.</p>
-        </div>
-    </section>
-
-    <!-- Seção da Oferta Final -->
-    <section id="oferta" class="bg-emerald-800 py-16 px-4 text-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold shadow-text">Receba seu acesso completo agora mesmo:</h2>
-            
-            <div class="mt-8 bg-white text-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-2xl flex flex-col sm:flex-col md:flex-row items-center gap-6 sm:gap-8">
-                <!-- Coluna da Esquerda: Imagem Redonda -->
-                <div class="w-full md:w-1/3 flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" alt="Torta de frutas vermelhas" class="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-2xl mx-auto object-cover border-4 border-white">
-                </div>
-
-                <!-- Coluna da Direita: Detalhes da Oferta -->
-                <div class="w-full md:w-2/3 text-left">
-                    <ul class="space-y-3">
-                        <li class="flex items-center"><svg class="w-6 h-6 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>E-book 1001 Receitas Zero Açúcar</li>
-                        <li class="flex items-center"><svg class="w-6 h-6 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 1: Guia de Sucos Detox</li>
-                        <li class="flex items-center"><svg class="w-6 h-6 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 2: E-book Fim da TPM</li>
-                        <li class="flex items-center"><svg class="w-6 h-6 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Bônus 3: Guia Emagreça Comendo</li>
-                        <li class="flex items-center"><svg class="w-6 h-6 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>Acesso Vitalício e Atualizações</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-white text-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-2xl mt-8">
-                <div class="text-center">
-                    <p class="text-base sm:text-lg">De <del class="text-red-500">R$ 347,90</del> por apenas:</p>
-                    <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-red-600 my-4 animate-pulse">R$ 67,00</p>
-                    <p class="text-gray-600">Pagamento único, sem mensalidades. Menos de R$ 0,07 por receita!</p>
-                </div>
-                
-                <div class="bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 my-6 rounded-r-lg">
-                    <p class="font-bold">🔥 Oferta Especial por Tempo Limitado!</p>
-                </div>
-                
-                <div class="mt-8">
-                    <a href="https://pay.kiwify.com.br/MMiGgpQ?afid=SBDeOxzF" class="cta-button w-full flex items-center justify-center text-white font-bold text-xl py-4 px-8 rounded-lg shadow-lg">
-                        <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                    <a href="https://pay.kiwify.com.br/MMiGgpQ?afid=SBDeOxzF" class="cta-button">
+                        <svg style="width: 1.5rem; height: 1.5rem; margin-right: 0.75rem;" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
                         QUERO ACESSO IMEDIATO ÀS 1001 RECEITAS!
                     </a>
-                    <p class="text-sm text-gray-500 mt-2">Compra 100% segura e acesso imediato.</p>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Compra 100% segura e acesso imediato.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção de Garantia -->
-    <section class="py-16 px-4">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-col md:flex-row items-center gap-6 sm:gap-8">
-            <div class="md:w-1/3 text-center">
-                <img src="https://img.icons8.com/plasticine/200/000000/guarantee.png" alt="Selo de Garantia de 7 Dias"/>
+        <section class="guarantee-section">
+            <div class="container guarantee-content">
+                <img src="https://img.icons8.com/plasticine/200/000000/guarantee.png" alt="[Imagem de Selo de Garantia de 7 Dias]"/>
+                <div>
+                    <h2>Experimente Sem Riscos por 7 Dias</h2>
+                    <p class="readable-text" style="font-size: 1.125rem; color: var(--color-secondary-text); margin-top: 1rem;">Sua tranquilidade é nossa prioridade. Você tem <strong>7 dias de Garantia Incondicional</strong>. Se, por qualquer motivo, não ficar 100% satisfeita, basta enviar um único e-mail. Devolveremos todo o seu dinheiro, sem perguntas. O risco é todo nosso.</p>
+                </div>
             </div>
-            <div class="md:w-2/3 text-center md:text-left">
-                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Experimente Sem Riscos por 7 Dias</h2>
-                <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Sua tranquilidade é nossa prioridade. Você tem <strong>7 dias de Garantia Incondicional</strong>. Se, por qualquer motivo, não ficar 100% satisfeita, basta enviar um único e-mail. Devolveremos todo o seu dinheiro, sem perguntas. O risco é todo nosso.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ - Perguntas Frequentes APRIMORADO -->
-    <section class="bg-gray-100 py-16 px-4">
-        <div class="max-w-3xl mx-auto" x-data="{ open: '' }">
-            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8">Suas últimas dúvidas, respondidas:</h2>
-            <div class="space-y-4">
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button @click="open = (open === 'faq1' ? '' : 'faq1')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-base sm:text-lg">Como recebo o material?</span>
-                        <svg x-show="open !== 'faq1'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                        <svg x-show="open === 'faq1'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
-                    </button>
-                    <div x-show="open === 'faq1'" x-collapse class="p-6 pt-0">
-                        <p class="text-gray-700 readable-text">O acesso é 100% digital e imediato. Após a confirmação do pagamento, você receberá um e-mail com o link para baixar seus e-books em PDF. Você pode ler no celular, tablet ou computador.</p>
+        <section style="background-color: #f9fafb;">
+            <div class="container" style="max-width: 800px;" id="faq">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2.5rem;">Suas últimas dúvidas, respondidas:</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Como recebo o material?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer"><p class="readable-text">O acesso é 100% digital e imediato. Após a confirmação do pagamento, você receberá um e-mail com o link para baixar seus e-books em PDF. Você pode ler no celular, tablet ou computador.</p></div>
                     </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button @click="open = (open === 'faq2' ? '' : 'faq2')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-base sm:text-lg">As receitas são difíceis de fazer?</span>
-                        <svg x-show="open !== 'faq2'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                        <svg x-show="open === 'faq2'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
-                    </button>
-                    <div x-show="open === 'faq2'" x-collapse class="p-6 pt-0">
-                        <p class="text-gray-700 readable-text">De forma alguma! As receitas foram pensadas para serem simples, práticas e com um passo a passo fácil de seguir, mesmo para quem não tem experiência na cozinha.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>As receitas são difíceis de fazer?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer"><p class="readable-text">De forma alguma! As receitas foram pensadas para serem simples, práticas e com um passo a passo fácil de seguir, mesmo para quem não tem experiência na cozinha.</p></div>
                     </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button @click="open = (open === 'faq3' ? '' : 'faq3')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-base sm:text-lg">Os ingredientes são caros ou difíceis de achar?</span>
-                        <svg x-show="open !== 'faq3'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                        <svg x-show="open === 'faq3'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
-                    </button>
-                    <div x-show="open === 'faq3'" x-collapse class="p-6 pt-0">
-                        <p class="text-gray-700 readable-text">Não. A grande maioria das receitas utiliza ingredientes comuns, que você encontra facilmente em qualquer supermercado.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Os ingredientes são caros ou difíceis de achar?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer"><p class="readable-text">Não. A grande maioria das receitas utiliza ingredientes comuns, que você encontra facilmente em qualquer supermercado.</p></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Rodapé -->
-    <footer class="text-center py-8 px-4 bg-gray-800 text-gray-400 text-sm">
+    <footer>
         <p>&copy; 2024 - Editora Maternum. Todos os direitos reservados.</p>
-        <p class="mt-2">Este produto não substitui o parecer profissional. Sempre consulte um profissional da saúde para tratar de assuntos relativos à saúde.</p>
+        <p style="margin-top: 0.5rem;">Este produto não substitui o parecer profissional. Sempre consulte um profissional da saúde para tratar de assuntos relativos à saúde.</p>
     </footer>
+
+    <script>
+        // Lógica do Carrossel
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                const navContainer = carousel.querySelector('.carousel-nav');
+                const totalSlides = slides.length;
+                let activeSlide = 0;
+                let interval;
+
+                function setActive(index) {
+                    slides.forEach((slide, i) => {
+                        slide.style.display = i === index ? 'flex' : 'none'; // Usar flex para layout
+                    });
+                    const dots = navContainer.querySelectorAll('.carousel-dot');
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                    activeSlide = index;
+                }
+
+                function nextSlide() {
+                    setActive((activeSlide + 1) % totalSlides);
+                }
+
+                function startCarousel() {
+                    interval = setInterval(nextSlide, 5000);
+                }
+
+                function stopCarousel() {
+                    clearInterval(interval);
+                }
+
+                // Criar os pontos de navegação
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        setActive(i);
+                    });
+                    navContainer.appendChild(dot);
+                }
+                
+                carousel.addEventListener('mouseenter', stopCarousel);
+                carousel.addEventListener('mouseleave', startCarousel);
+
+                setActive(0);
+                startCarousel();
+            }
+
+            // Lógica do FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-icon');
+
+                question.addEventListener('click', () => {
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    if (isOpen) {
+                        answer.style.maxHeight = '0px';
+                        icon.textContent = '+';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.textContent = '-';
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
