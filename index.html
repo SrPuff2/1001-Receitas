@@ -8,7 +8,7 @@
     <!-- INÍCIO DO CÓDIGO PARA PREVIEW DE LINK (THUMBNAIL) -->
     <meta property="og:title" content="1001 Receitas Deliciosas Zero Açúcar">
     <meta property="og:description" content="A liberdade de comer o doce que você ama, sem culpa e sem sair da dieta.">
-    <meta property="og:image" content="https://blog.prezunic.com.br/wp-content/uploads/2024/11/image.jpeg">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1587324439853-c07a3d219912?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://1001receitas.vercel.app/">
     <meta property="og:type" content="website">
     <!-- FIM DO CÓDIGO PARA PREVIEW DE LINK -->
@@ -23,8 +23,8 @@
         :root {
             --color-background: #FFFBEB;
             --color-header-bg: #047857;
-            --color-primary-text: #333;
-            --color-secondary-text: #555;
+            --color-primary-text: #1f2937;
+            --color-secondary-text: #4b5563;
             --color-highlight: #047857;
             --color-cta-start: #EF4444;
             --color-cta-end: #F97316;
@@ -88,8 +88,8 @@
         .carousel-image { width: 100%; height: 224px; object-fit: cover; }
         .carousel-content { padding: 1.5rem; text-align: left; }
         .carousel-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .carousel-nav { margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
-        .carousel-arrow { background-color: white; border: 1px solid #e5e7eb; border-radius: 50%; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s; }
+        .carousel-nav { margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
+        .carousel-arrow { background-color: white; border: 1px solid #e5e7eb; border-radius: 50%; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
         .carousel-arrow:hover { background-color: #f3f4f6; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .carousel-dots { display: flex; gap: 0.5rem; }
         .carousel-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background-color: #d1d5db; cursor: pointer; transition: all 0.3s; }
@@ -119,12 +119,12 @@
         .info-icon { flex-shrink: 0; padding: 0.75rem; border-radius: 50%; }
 
         /* Oferta */
-        .offer-section { background-color: #10b981; color: white; }
+        .offer-section { background-color: var(--color-header-bg); color: white; }
         .offer-box { background-color: white; color: var(--color-primary-text); border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
         .offer-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
         .offer-image { width: 10rem; height: 10rem; border-radius: 50%; object-cover; border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         .offer-list li { display: flex; align-items: center; margin-bottom: 0.75rem; font-size: 1rem; }
-        .offer-list svg { flex-shrink: 0; width: 1.5rem; height: 1.5rem; color: #10b981; margin-right: 0.5rem; }
+        .offer-list svg { flex-shrink: 0; width: 1.5rem; height: 1.5rem; color: var(--color-header-bg); margin-right: 0.5rem; }
         .price { font-size: 3.5rem; font-weight: 800; color: #dc2626; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         .urgency-banner { background-color: #fef3c7; border-left: 4px solid #f59e0b; color: #b45309; padding: 1rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0; }
         .cta-button {
@@ -151,7 +151,7 @@
         .faq-item { background-color: white; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
         .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; text-align: left; border: none; background: none; }
         .faq-icon { transition: transform 0.3s ease-in-out; }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .faq-answer p { padding: 0 1.5rem 1.5rem; }
 
@@ -219,7 +219,7 @@
                     <div class="carousel-slide">
                         <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" alt="[Imagem de Sobremesa bonita e saborosa]" class="carousel-image">
                         <div class="carousel-content">
-                            <h3 style="color: #ea580c;">� Sabor de Verdade</h3>
+                            <h3 style="color: #ea580c;">🍰 Sabor de Verdade</h3>
                             <p class="readable-text">Esqueça os doces "fit" com gosto de isopor. Aqui, as sobremesas são tão gostosas que sua família nem vai notar que são saudáveis.</p>
                         </div>
                     </div>
@@ -240,11 +240,11 @@
                 </div>
                 <div class="carousel-nav">
                     <button class="carousel-arrow" id="prevBtn">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </button>
                     <div class="carousel-dots"></div>
                     <button class="carousel-arrow" id="nextBtn">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                 </div>
             </div>
@@ -401,21 +401,27 @@
                     <div class="faq-item">
                         <button class="faq-question">
                             <span>Como recebo o material?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">
+                                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
                         </button>
                         <div class="faq-answer"><p class="readable-text">O acesso é 100% digital e imediato. Após a confirmação do pagamento, você receberá um e-mail com o link para baixar seus e-books em PDF. Você pode ler no celular, tablet ou computador.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">
                             <span>As receitas são difíceis de fazer?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">
+                                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
                         </button>
                         <div class="faq-answer"><p class="readable-text">De forma alguma! As receitas foram pensadas para serem simples, práticas e com um passo a passo fácil de seguir, mesmo para quem não tem experiência na cozinha.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question">
                             <span>Os ingredientes são caros ou difíceis de achar?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">
+                                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
                         </button>
                         <div class="faq-answer"><p class="readable-text">Não. A grande maioria das receitas utiliza ingredientes comuns, que você encontra facilmente em qualquer supermercado.</p></div>
                     </div>
@@ -430,33 +436,41 @@
     </footer>
 
     <script>
-        // Lógica do Carrossel
         document.addEventListener('DOMContentLoaded', function () {
+            // Lógica do Carrossel
             const carousel = document.getElementById('carousel');
             if (carousel) {
                 const slides = carousel.querySelectorAll('.carousel-slide');
-                const navContainer = carousel.querySelector('.carousel-nav');
+                const dotsContainer = carousel.querySelector('.carousel-dots');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
                 const totalSlides = slides.length;
                 let activeSlide = 0;
                 let interval;
 
                 function setActive(index) {
                     slides.forEach((slide, i) => {
-                        slide.style.display = i === index ? (window.innerWidth < 768 ? 'block' : 'flex') : 'none';
+                        slide.classList.remove('active');
+                        if (i === index) slide.classList.add('active');
                     });
-                    const dots = navContainer.querySelectorAll('.carousel-dot');
+                    const dots = dotsContainer.querySelectorAll('.carousel-dot');
                     dots.forEach((dot, i) => {
                         dot.classList.toggle('active', i === index);
                     });
                     activeSlide = index;
                 }
 
-                function nextSlide() {
+                function next() {
                     setActive((activeSlide + 1) % totalSlides);
+                }
+                
+                function prev() {
+                    setActive((activeSlide - 1 + totalSlides) % totalSlides);
                 }
 
                 function startCarousel() {
-                    interval = setInterval(nextSlide, 5000);
+                    stopCarousel(); // Garante que não haja múltiplos intervalos
+                    interval = setInterval(next, 5000);
                 }
 
                 function stopCarousel() {
@@ -467,20 +481,18 @@
                 for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('button');
                     dot.classList.add('carousel-dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        setActive(i);
-                    });
-                    navContainer.appendChild(dot);
+                    dot.addEventListener('click', () => setActive(i));
+                    dotsContainer.appendChild(dot);
                 }
+                
+                prevBtn.addEventListener('click', prev);
+                nextBtn.addEventListener('click', next);
                 
                 carousel.addEventListener('mouseenter', stopCarousel);
                 carousel.addEventListener('mouseleave', startCarousel);
 
                 setActive(0);
                 startCarousel();
-                
-                window.addEventListener('resize', () => setActive(activeSlide));
             }
 
             // Lógica do FAQ
@@ -488,16 +500,18 @@
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
-                const icon = item.querySelector('.faq-icon');
 
                 question.addEventListener('click', () => {
-                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
-                    if (isOpen) {
-                        answer.style.maxHeight = '0px';
-                        icon.textContent = '+';
-                    } else {
+                    const isOpen = item.classList.contains('open');
+                    
+                    faqItems.forEach(i => {
+                        i.classList.remove('open');
+                        i.querySelector('.faq-answer').style.maxHeight = '0px';
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add('open');
                         answer.style.maxHeight = answer.scrollHeight + 'px';
-                        icon.textContent = '-';
                     }
                 });
             });
@@ -506,4 +520,3 @@
 
 </body>
 </html>
-�
