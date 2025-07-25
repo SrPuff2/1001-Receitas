@@ -8,7 +8,7 @@
     <!-- INÍCIO DO CÓDIGO PARA PREVIEW DE LINK (THUMBNAIL) -->
     <meta property="og:title" content="1001 Receitas Deliciosas Zero Açúcar">
     <meta property="og:description" content="A liberdade de comer o doce que você ama, sem culpa e sem sair da dieta.">
-    <meta property="og:image" content="https://blog.prezunic.com.br/wp-content/uploads/2024/11/image.webp">
+    <meta property="og:image" content="https://blog.prezunic.com.br/wp-content/uploads/2024/11/image.jpeg">
     <meta property="og:url" content="https://1001receitas.vercel.app/">
     <meta property="og:type" content="website">
     <!-- FIM DO CÓDIGO PARA PREVIEW DE LINK -->
@@ -82,12 +82,16 @@
 
         /* Carrossel */
         .carousel-container { max-width: 900px; }
+        .carousel-wrapper { position: relative; }
         .carousel-slide { display: none; flex-direction: column; background-color: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         .carousel-slide.active { display: flex; }
         .carousel-image { width: 100%; height: 224px; object-fit: cover; }
         .carousel-content { padding: 1.5rem; text-align: left; }
         .carousel-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .carousel-nav { margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.75rem; }
+        .carousel-nav { margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: 1.5rem; }
+        .carousel-arrow { background-color: white; border: 1px solid #e5e7eb; border-radius: 50%; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s; }
+        .carousel-arrow:hover { background-color: #f3f4f6; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .carousel-dots { display: flex; gap: 0.5rem; }
         .carousel-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background-color: #d1d5db; cursor: pointer; transition: all 0.3s; }
         .carousel-dot.active { background-color: #ef4444; width: 1.5rem; }
 
@@ -145,7 +149,9 @@
         .guarantee-content { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
         .guarantee-section img { width: 150px; }
         .faq-item { background-color: white; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
-        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; text-align: left; }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; text-align: left; border: none; background: none; }
+        .faq-icon { transition: transform 0.3s ease-in-out; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
         .faq-answer p { padding: 0 1.5rem 1.5rem; }
 
@@ -202,7 +208,7 @@
         <section>
             <div class="container carousel-container" id="carousel">
                 <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Chega de passar vontade. A vida pode ser doce e saudável.</h2>
-                <div class="carousel-wrapper" style="position: relative;">
+                <div class="carousel-wrapper">
                     <div class="carousel-slide active">
                         <img src="https://i0.statig.com.br/bancodeimagens/al/xm/ar/alxmarc4ozij3d9knro6wf83q.jpg" alt="[Imagem de Bolo de chocolate saudável]" class="carousel-image">
                         <div class="carousel-content">
@@ -213,7 +219,7 @@
                     <div class="carousel-slide">
                         <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" alt="[Imagem de Sobremesa bonita e saborosa]" class="carousel-image">
                         <div class="carousel-content">
-                            <h3 style="color: #ea580c;">🍰 Sabor de Verdade</h3>
+                            <h3 style="color: #ea580c;">� Sabor de Verdade</h3>
                             <p class="readable-text">Esqueça os doces "fit" com gosto de isopor. Aqui, as sobremesas são tão gostosas que sua família nem vai notar que são saudáveis.</p>
                         </div>
                     </div>
@@ -232,7 +238,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-nav"></div>
+                <div class="carousel-nav">
+                    <button class="carousel-arrow" id="prevBtn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <div class="carousel-dots"></div>
+                    <button class="carousel-arrow" id="nextBtn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -492,3 +506,4 @@
 
 </body>
 </html>
+�
