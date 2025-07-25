@@ -57,12 +57,12 @@
 <body class="text-gray-800">
 
     <!-- Seção Principal (Hero) REESTILIZADA -->
-    <header class="hero-section text-white text-center py-24 px-4">
+    <header class="hero-section text-white text-center py-16 px-4 sm:py-20 sm:px-6">
         <div class="max-w-4xl mx-auto">
-            <h1 class="hero-title text-4xl md:text-6xl leading-tight shadow-text">
+            <h1 class="hero-title text-2xl sm:text-3xl sm:text-4xl md:text-4xl sm:text-5xl md:text-6xl leading-tight shadow-text">
                 A Liberdade de Comer o <span class="text-amber-300">Doce que Você Ama</span>
             </h1>
-            <p class="mt-6 text-2xl md:text-3xl text-gray-200 max-w-2xl mx-auto tracking-wide">
+            <p class="mt-6 text-xl sm:text-2xl md:text-2xl sm:text-3xl text-gray-200 max-w-2xl mx-auto tracking-wide">
                 Sem Culpa. Sem Sair da Dieta.
             </p>
         </div>
@@ -71,9 +71,9 @@
     <!-- SEÇÃO PERSUASIVA COM CITAÇÃO REAL -->
     <section class="py-16 px-4 bg-white">
         <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-900">Por que as dietas tradicionais falham?</h2>
-            <p class="mt-4 text-lg text-gray-700 readable-text">Elas nos ensinam a lutar contra a comida. A ver o alimento como um inimigo. Contar calorias, pular refeições, passar fome... Esse ciclo de restrição e culpa não só nos deixa infelizes, como também sabota nosso metabolismo.</p>
-            <p class="mt-4 text-lg text-gray-700 readable-text">A verdade é que emagrecer e ser saudável não tem a ver com parar de comer, mas sim com <span class="highlight">aprender a comer</span>. É sobre nutrir o corpo com comida de verdade, rica em sabor e em vida.</p>
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Por que as dietas tradicionais falham?</h2>
+            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Elas nos ensinam a lutar contra a comida. A ver o alimento como um inimigo. Contar calorias, pular refeições, passar fome... Esse ciclo de restrição e culpa não só nos deixa infelizes, como também sabota nosso metabolismo.</p>
+            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">A verdade é que emagrecer e ser saudável não tem a ver com parar de comer, mas sim com <span class="highlight">aprender a comer</span>. É sobre nutrir o corpo com comida de verdade, rica em sabor e em vida.</p>
             <div class="mt-8 bg-gray-50 border-l-4 border-amber-400 p-6 text-left rounded-r-lg">
                 <p class="text-gray-700 italic readable-text">"O terrorismo nutricional e a mentalidade de dieta não funcionam e engordam. Acredito que o resgate do prazer de comer é a chave para uma relação mais saudável com a comida e com o corpo."</p>
                 <p class="mt-4 font-bold text-right">- Sophie Deram, Nutricionista e Doutora em endocrinologia (@sophiederam)</p>
@@ -88,38 +88,38 @@
                   stopCarousel() { clearInterval(this.interval) } }"
         x-init="startCarousel()">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-900">Chega de passar vontade. A vida pode ser doce e saudável.</h2>
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Chega de passar vontade. A vida pode ser doce e saudável.</h2>
             <div class="mt-8 relative" @mouseenter="stopCarousel()" @mouseleave="startCarousel()">
                 <!-- Slides -->
                 <div class="overflow-hidden rounded-lg shadow-2xl">
                     <!-- Slide 1 -->
-                    <div x-show="activeSlide === 1" class="flex flex-col md:flex-row items-center bg-white">
-                        <img src="https://i0.statig.com.br/bancodeimagens/al/xm/ar/alxmarc4ozij3d9knro6wf83q.jpg" class="w-full md:w-1/2 h-56 md:h-64 object-cover">
-                        <div class="p-6 md:p-8 text-left">
+                    <div x-show="activeSlide === 1" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
+                        <img src="https://i0.statig.com.br/bancodeimagens/al/xm/ar/alxmarc4ozij3d9knro6wf83q.jpg" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
+                        <div class="p-4 sm:p-6 md:p-8 text-left">
                             <h3 class="font-bold text-2xl mb-2 text-red-600">😭 Chega de Culpa!</h3>
                             <p class="text-gray-700 readable-text">Sabe aquela sensação ruim depois de comer um doce? Com estas receitas, você só sente o prazer, sem o peso na consciência.</p>
                         </div>
                     </div>
                     <!-- Slide 2 -->
-                    <div x-show="activeSlide === 2" class="flex flex-col md:flex-row items-center bg-white">
-                        <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" class="w-full md:w-1/2 h-56 md:h-64 object-cover">
-                        <div class="p-6 md:p-8 text-left">
+                    <div x-show="activeSlide === 2" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
+                        <img src="https://www.bcnoticias.com.br/wp-content/uploads/2023/02/Depositphotos_39708157_S-1000x570.jpg" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
+                        <div class="p-4 sm:p-6 md:p-8 text-left">
                             <h3 class="font-bold text-2xl mb-2 text-orange-600">🍰 Sabor de Verdade</h3>
                             <p class="text-gray-700 readable-text">Esqueça os doces "fit" com gosto de isopor. Aqui, as sobremesas são tão gostosas que sua família nem vai notar que são saudáveis.</p>
                         </div>
                     </div>
                     <!-- Slide 3 -->
-                    <div x-show="activeSlide === 3" class="flex flex-col md:flex-row items-center bg-white">
-                        <img src="https://s2.glbimg.com/GEtIiNJFl_VTRVLZ_IxkAuS0cQA=/620x455/e.glbimg.com/og/ed/f/original/2019/09/06/avocado_com_cacau_2.png" class="w-full md:w-1/2 h-56 md:h-64 object-cover">
-                        <div class="p-6 md:p-8 text-left">
+                    <div x-show="activeSlide === 3" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
+                        <img src="https://s2.glbimg.com/GEtIiNJFl_VTRVLZ_IxkAuS0cQA=/620x455/e.glbimg.com/og/ed/f/original/2019/09/06/avocado_com_cacau_2.png" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
+                        <div class="p-4 sm:p-6 md:p-8 text-left">
                             <h3 class="font-bold text-2xl mb-2 text-amber-600">⏰ Fáceis e Rápidas</h3>
                             <p class="text-gray-700 readable-text">Sem ingredientes mirabolantes ou técnicas complicadas. São receitas práticas para o dia a dia de quem não tem tempo a perder.</p>
                         </div>
                     </div>
                     <!-- Slide 4 -->
-                    <div x-show="activeSlide === 4" class="flex flex-col md:flex-row items-center bg-white">
-                        <img src="https://blog.gsuplementos.com.br/wp-content/uploads/2023/07/receitas.webp" class="w-full md:w-1/2 h-56 md:h-64 object-cover">
-                        <div class="p-6 md:p-8 text-left">
+                    <div x-show="activeSlide === 4" class="flex flex-col sm:flex-col md:flex-row items-center bg-white">
+                        <img src="https://blog.gsuplementos.com.br/wp-content/uploads/2023/07/receitas.webp" class="w-full sm:w-full md:w-1/2 h-48 sm:h-56 md:h-64 object-cover">
+                        <div class="p-4 sm:p-6 md:p-8 text-left">
                             <h3 class="font-bold text-2xl mb-2 text-emerald-600">🎁 Mais que Receitas</h3>
                             <p class="text-gray-700 readable-text">Além do livro principal, você leva 4 bônus incríveis para transformar sua saúde de forma completa, sem pagar nada a mais por isso.</p>
                         </div>
@@ -141,23 +141,23 @@
     <section class="py-16 px-4 bg-white">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900">Quer uma prova de que é possível?</h2>
-                <p class="mt-2 text-lg text-gray-700 readable-text">Aqui está uma das nossas receitas favoritas. Experimente e se surpreenda!</p>
+                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Quer uma prova de que é possível?</h2>
+                <p class="mt-2 text-base sm:text-lg text-gray-700 readable-text">Aqui está uma das nossas receitas favoritas. Experimente e se surpreenda!</p>
             </div>
-            <div class="bg-white rounded-lg shadow-2xl p-6 md:p-8 border-l-8 border-amber-400">
+            <div class="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border-l-8 border-amber-400">
                 <h3 class="font-bold text-2xl text-gray-800">Mousse de Chocolate Fit (e delicioso!)</h3>
                 <p class="text-gray-500 mt-1 mb-6">Leva só 3 ingredientes e fica pronto em minutos.</p>
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="w-full md:w-1/2">
-                        <h4 class="font-bold text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
+                <div class="flex flex-col sm:flex-col md:flex-row gap-6 sm:gap-8">
+                    <div class="w-full sm:w-full md:w-1/2">
+                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
                         <ul class="list-disc list-inside space-y-2 text-gray-700 readable-text">
                             <li>2 abacates maduros</li>
                             <li>4 colheres de sopa de cacau em pó 100%</li>
                             <li>4 colheres de sopa de mel ou agave (ou a gosto)</li>
                         </ul>
                     </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="font-bold text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
+                    <div class="w-full sm:w-full md:w-1/2">
+                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
                         <ol class="list-decimal list-inside space-y-2 text-gray-700 readable-text">
                             <li>Bata tudo no liquidificador até obter um creme liso.</li>
                             <li>Distribua em taças e leve à geladeira por 30 minutos.</li>
@@ -175,9 +175,9 @@
     <!-- SEÇÃO DE INFORMATIVOS SVG (REINSERIDA) -->
     <section class="py-16 px-4 bg-gray-100">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center text-gray-900">Um tesouro culinário na sua mão</h2>
-            <p class="mt-2 text-lg text-center text-gray-700 readable-text">Organizamos tudo para você encontrar a receita perfeita para cada ocasião.</p>
-            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-center text-gray-900">Um tesouro culinário na sua mão</h2>
+            <p class="mt-2 text-base sm:text-lg text-center text-gray-700 readable-text">Organizamos tudo para você encontrar a receita perfeita para cada ocasião.</p>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-4">
                     <div class="flex-shrink-0 bg-red-100 p-3 rounded-full"><svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21,12a9,9,0,1,1-9-9A9,9,0,0,1,21,12Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12,8v4l2,1"></path></svg></div>
                     <div>
@@ -214,22 +214,22 @@
     <section class="py-16 px-4 bg-white">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900">E que tal uma opção para o café da manhã?</h2>
-                <p class="mt-2 text-lg text-gray-700 readable-text">Essa panqueca vai salvar suas manhãs. É incrivelmente fácil!</p>
+                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">E que tal uma opção para o café da manhã?</h2>
+                <p class="mt-2 text-base sm:text-lg text-gray-700 readable-text">Essa panqueca vai salvar suas manhãs. É incrivelmente fácil!</p>
             </div>
-            <div class="bg-white rounded-lg shadow-2xl p-6 md:p-8 border-l-8 border-red-400">
+            <div class="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border-l-8 border-red-400">
                 <h3 class="font-bold text-2xl text-gray-800">Panqueca de Banana Fit (2 Ingredientes)</h3>
                 <p class="text-gray-500 mt-1 mb-6">A receita mais fácil do mundo para um café da manhã rápido e saudável.</p>
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="w-full md:w-1/2">
-                        <h4 class="font-bold text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
+                <div class="flex flex-col sm:flex-col md:flex-row gap-6 sm:gap-8">
+                    <div class="w-full sm:w-full md:w-1/2">
+                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Ingredientes:</h4>
                         <ul class="list-disc list-inside space-y-2 text-gray-700 readable-text">
                             <li>1 banana madura</li>
                             <li>2 ovos</li>
                         </ul>
                     </div>
-                    <div class="w-full md:w-1/2">
-                        <h4 class="font-bold text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
+                    <div class="w-full sm:w-full md:w-1/2">
+                        <h4 class="font-bold text-base sm:text-lg border-b-2 border-gray-200 pb-2 mb-3">Modo de Preparo:</h4>
                         <ol class="list-decimal list-inside space-y-2 text-gray-700 readable-text">
                             <li>Amasse bem a banana com um garfo.</li>
                             <li>Em uma tigela, bata os ovos e misture com a banana amassada.</li>
@@ -245,21 +245,21 @@
     </section>
     
     <!-- SEÇÃO: PRÉ-CTA -->
-    <section class="py-20 px-4 text-center bg-gray-100">
+    <section class="py-16 px-4 sm:py-20 sm:px-6 text-center bg-gray-100">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900">Você tem duas escolhas agora...</h2>
-            <p class="mt-4 text-lg text-gray-700 readable-text">Você pode continuar no mesmo ciclo: sentir vontade de comer um doce, se render, sentir culpa e começar tudo de novo amanhã. Ou você pode tomar uma decisão hoje para quebrar esse ciclo para sempre.</p>
-            <p class="mt-4 text-lg text-gray-700 readable-text">Imagine ter a tranquilidade de saber que você tem <span class="highlight">centenas de opções deliciosas e saudáveis</span> te esperando. Imagine a alegria de servir uma sobremesa incrível para sua família, sabendo que está cuidando da saúde de todos. Essa liberdade não tem preço.</p>
-            <p class="mt-6 text-xl font-bold text-gray-800">Está na hora de transformar sua relação com a comida. Estamos juntos nessa jornada.</p>
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Você tem duas escolhas agora...</h2>
+            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Você pode continuar no mesmo ciclo: sentir vontade de comer um doce, se render, sentir culpa e começar tudo de novo amanhã. Ou você pode tomar uma decisão hoje para quebrar esse ciclo para sempre.</p>
+            <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Imagine ter a tranquilidade de saber que você tem <span class="highlight">centenas de opções deliciosas e saudáveis</span> te esperando. Imagine a alegria de servir uma sobremesa incrível para sua família, sabendo que está cuidando da saúde de todos. Essa liberdade não tem preço.</p>
+            <p class="mt-6 text-base sm:text-lg sm:text-xl font-bold text-gray-800">Está na hora de transformar sua relação com a comida. Estamos juntos nessa jornada.</p>
         </div>
     </section>
 
     <!-- Seção da Oferta Final -->
     <section id="oferta" class="bg-emerald-800 py-16 px-4 text-white">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold shadow-text">Receba seu acesso completo agora mesmo:</h2>
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold shadow-text">Receba seu acesso completo agora mesmo:</h2>
             
-            <div class="mt-8 bg-white text-gray-800 rounded-lg p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-center gap-8">
+            <div class="mt-8 bg-white text-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-2xl flex flex-col sm:flex-col md:flex-row items-center gap-6 sm:gap-8">
                 <!-- Coluna da Esquerda: Imagem Redonda -->
                 <div class="w-full md:w-1/3 flex-shrink-0">
                     <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=580&q=80" alt="Torta de frutas vermelhas" class="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-2xl mx-auto object-cover border-4 border-white">
@@ -277,10 +277,10 @@
                 </div>
             </div>
 
-            <div class="bg-white text-gray-800 rounded-lg p-6 md:p-8 shadow-2xl mt-8">
+            <div class="bg-white text-gray-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-2xl mt-8">
                 <div class="text-center">
-                    <p class="text-lg">De <del class="text-red-500">R$ 347,90</del> por apenas:</p>
-                    <p class="text-6xl font-extrabold text-red-600 my-4 animate-pulse">R$ 67,00</p>
+                    <p class="text-base sm:text-lg">De <del class="text-red-500">R$ 347,90</del> por apenas:</p>
+                    <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-red-600 my-4 animate-pulse">R$ 67,00</p>
                     <p class="text-gray-600">Pagamento único, sem mensalidades. Menos de R$ 0,07 por receita!</p>
                 </div>
                 
@@ -301,13 +301,13 @@
 
     <!-- Seção de Garantia -->
     <section class="py-16 px-4">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-col md:flex-row items-center gap-6 sm:gap-8">
             <div class="md:w-1/3 text-center">
                 <img src="https://img.icons8.com/plasticine/200/000000/guarantee.png" alt="Selo de Garantia de 7 Dias"/>
             </div>
             <div class="md:w-2/3 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-gray-900">Experimente Sem Riscos por 7 Dias</h2>
-                <p class="mt-4 text-lg text-gray-700 readable-text">Sua tranquilidade é nossa prioridade. Você tem <strong>7 dias de Garantia Incondicional</strong>. Se, por qualquer motivo, não ficar 100% satisfeita, basta enviar um único e-mail. Devolveremos todo o seu dinheiro, sem perguntas. O risco é todo nosso.</p>
+                <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-gray-900">Experimente Sem Riscos por 7 Dias</h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-700 readable-text">Sua tranquilidade é nossa prioridade. Você tem <strong>7 dias de Garantia Incondicional</strong>. Se, por qualquer motivo, não ficar 100% satisfeita, basta enviar um único e-mail. Devolveremos todo o seu dinheiro, sem perguntas. O risco é todo nosso.</p>
             </div>
         </div>
     </section>
@@ -315,11 +315,11 @@
     <!-- FAQ - Perguntas Frequentes APRIMORADO -->
     <section class="bg-gray-100 py-16 px-4">
         <div class="max-w-3xl mx-auto" x-data="{ open: '' }">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Suas últimas dúvidas, respondidas:</h2>
+            <h2 class="text-2xl sm:text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8">Suas últimas dúvidas, respondidas:</h2>
             <div class="space-y-4">
                 <div class="bg-white rounded-lg shadow-sm">
                     <button @click="open = (open === 'faq1' ? '' : 'faq1')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-lg">Como recebo o material?</span>
+                        <span class="font-bold text-base sm:text-lg">Como recebo o material?</span>
                         <svg x-show="open !== 'faq1'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                         <svg x-show="open === 'faq1'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
                     </button>
@@ -329,7 +329,7 @@
                 </div>
                 <div class="bg-white rounded-lg shadow-sm">
                     <button @click="open = (open === 'faq2' ? '' : 'faq2')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-lg">As receitas são difíceis de fazer?</span>
+                        <span class="font-bold text-base sm:text-lg">As receitas são difíceis de fazer?</span>
                         <svg x-show="open !== 'faq2'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                         <svg x-show="open === 'faq2'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
                     </button>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="bg-white rounded-lg shadow-sm">
                     <button @click="open = (open === 'faq3' ? '' : 'faq3')" class="w-full flex justify-between items-center text-left p-6">
-                        <span class="font-bold text-lg">Os ingredientes são caros ou difíceis de achar?</span>
+                        <span class="font-bold text-base sm:text-lg">Os ingredientes são caros ou difíceis de achar?</span>
                         <svg x-show="open !== 'faq3'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                         <svg x-show="open === 'faq3'" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
                     </button>
